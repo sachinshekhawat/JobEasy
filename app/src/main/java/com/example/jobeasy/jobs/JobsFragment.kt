@@ -2,6 +2,7 @@ package com.example.jobeasy.jobs
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +36,7 @@ class JobsFragment : Fragment() {
     private val allJobs = mutableListOf<Job>() // This stores all jobs permanently
     private var jobs = mutableListOf<Job>()    // This is what you show in RecyclerView
 
-    private var currentPage = 1
+    //private var currentPage = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -87,33 +88,33 @@ class JobsFragment : Fragment() {
         viewModel.jobs.observe(viewLifecycleOwner) { resource ->
             when (resource) {
                 is Resource.Loading -> {
-                    if (currentPage == 1) {
-                        progressBar.visibility = View.VISIBLE
-                        loadingText.visibility = View.VISIBLE
-                        loadingText.text = "Loading jobs, please wait..."
-                        emptyState.visibility = View.GONE
-                    }
+//                    if (currentPage == 1) {
+//
+//                    }
+                    progressBar.visibility = View.VISIBLE
+                    loadingText.visibility = View.VISIBLE
+                    loadingText.text = "Loading jobs, please wait..."
+                    emptyState.visibility = View.GONE
                 }
                 is Resource.Success -> {
                     progressBar.visibility = View.GONE
                     loadingText.visibility = View.GONE
                     resource.data?.let { newJobs ->
-                        if (currentPage == 1) {
-                            allJobs.clear()
-                        }
-                        if (newJobs.isNotEmpty()) {
-                            allJobs.addAll(newJobs)  // Always store the full list
+//                        if (currentPage == 1) {
+////                            jobs.clear()
+//                        }
+                        jobs.addAll(newJobs)
+                        if (jobs.isNotEmpty()) {
+                             // Always store the full list
                             recyclerView.post {  // 💥 This line is the magic
-                                jobAdapter.updateList(allJobs)
+                                jobAdapter.updateList(jobs)
                             }
                             recyclerView.visibility = View.VISIBLE
                             emptyState.visibility = View.GONE
                         } else {
-                            if (allJobs.isEmpty()) { // No data even on page 1
-                                recyclerView.visibility = View.GONE
-                                emptyState.visibility = View.VISIBLE
-                                emptyState.text = "No Jobs Found!"
-                            }
+                            recyclerView.visibility = View.GONE
+                            emptyState.visibility = View.VISIBLE
+                            emptyState.text = "No Jobs Found!"
                         }
                     }
                 }
@@ -122,7 +123,7 @@ class JobsFragment : Fragment() {
                     loadingText.visibility = View.GONE
                     Toast.makeText(requireContext(), resource.message ?: "Error loading jobs", Toast.LENGTH_SHORT).show()
 
-                    if (allJobs.isEmpty()) {
+                    if (jobs.isEmpty()) {
                         recyclerView.visibility = View.GONE
                         emptyState.visibility = View.VISIBLE
                         emptyState.text = "No Jobs Found!"
@@ -134,12 +135,6 @@ class JobsFragment : Fragment() {
         viewModel.fetchJobs()
 
 
-        val searchAutoComplete = searchView.findViewById<androidx.appcompat.widget.SearchView.SearchAutoComplete>(androidx.appcompat.R.id.search_src_text)
-        val ghostWhiteColor = ContextCompat.getColor(requireContext(), R.color.GhostWhite)
-        searchAutoComplete.setHintTextColor(ghostWhiteColor)
-        searchAutoComplete.setTextColor(android.graphics.Color.BLACK)
-
-
         searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?) = false
 
@@ -147,9 +142,9 @@ class JobsFragment : Fragment() {
                 val searchText = newText?.lowercase(Locale.ROOT)?.trim() ?: ""
 
                 val filteredList = if (searchText.isEmpty()) {
-                    allJobs
+                    jobs
                 } else {
-                    allJobs.filter { job ->
+                    jobs.filter { job ->
                         val title = job.title?.lowercase(Locale.ROOT) ?: ""
                         val company = job.company_name?.lowercase(Locale.ROOT) ?: ""
                         title.contains(searchText) || company.contains(searchText)

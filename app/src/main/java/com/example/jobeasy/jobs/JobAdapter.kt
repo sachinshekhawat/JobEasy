@@ -19,7 +19,7 @@ class JobAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(newJobs: List<Job>) {
-        jobs.clear()
+        //jobs.clear()
         jobs.addAll(newJobs)
         notifyDataSetChanged()
     }
