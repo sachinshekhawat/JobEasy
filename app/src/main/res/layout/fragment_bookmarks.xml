@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/WhiteSmoke"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvBookmarkedJobs"
+        android:text="BOOKMARKED JOBS"
+        android:background="@color/WhiteSmoke"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBookmarkedJobs"
+        android:layout_below="@+id/tvBookmarkedJobs"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@color/WhiteSmoke"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/tvNoBookmarks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Bookmarks !"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>

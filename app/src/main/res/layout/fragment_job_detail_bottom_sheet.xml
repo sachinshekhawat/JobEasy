@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomSheetScroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:padding="1dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@drawable/gradient_bottomsheet"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+
+        <!-- Job Title & Company -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Bookmark Icon aligned to top-end -->
+            <ImageView
+                android:id="@+id/ivBookmark"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:contentDescription="Bookmark"
+                android:padding="4dp"
+                android:src="@drawable/bookw"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/tvJobTitle"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_toStartOf="@id/ivBookmark"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:gravity="start"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tvCompanyName"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="16dp"
+            android:textColorHint="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Salary, Location, Category -->
+        <TextView
+            android:id="@+id/tvPlace"
+            android:text="Location"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvSalary"
+            android:text="Salary"
+            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvJobCategory"
+            android:text="Category"
+            android:layout_marginBottom="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- Primary Details -->
+        <TextView
+            android:text="Primary Details"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView android:id="@+id/tvExperience" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/tvQualification" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/tvJobType" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/tvFees" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <!-- Job Description -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:lineSpacingExtra="4dp"
+            android:padding="12dp"
+            android:id="@+id/tvJobDesc"
+            android:text="Job Description"
+            android:textIsSelectable="true"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp" />
+
+        <!-- More Info -->
+        <TextView android:id="@+id/tvJobRole" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/tvJobHours" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/tvOpenings" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/tvPostedDate" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/tvExpiryDate" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/tvUpdatedOn" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <!-- Contact Info -->
+        <TextView
+            android:text="Contact"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView android:id="@+id/tvWhatsapp" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <TextView android:id="@+id/tvWhatsappLink" android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btApplyNow"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/AliceBlue"
+            android:text="APPLY NOW"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
